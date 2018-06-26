@@ -95,7 +95,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toStartOf="@id/btn_8"
         app:layout_constraintTop_toBottomOf="@id/btn_4"
-        app:layout_constraintBottom_toTopOf="@id/btn_hashtag"
+        app:layout_constraintBottom_toTopOf="@id/btn_delete_all"
         android:layout_width="0dp"
         android:layout_height="0dp" />
 
@@ -119,15 +119,15 @@
         app:layout_constraintStart_toEndOf="@id/btn_8"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/btn_6"
-        app:layout_constraintBottom_toTopOf="@id/btn_multiply"
+        app:layout_constraintBottom_toTopOf="@id/btn_delete_once"
         android:layout_width="0dp"
         android:layout_height="0dp" />
 
 
-    <!--Button #-->
+    <!--Button delete all-->
     <Button
-        android:id="@+id/btn_hashtag"
-        android:text="@string/btn_digit_hashtag"
+        android:id="@+id/btn_delete_all"
+        android:text="@string/btn_digit_delete_all"
         style="@style/DigitButton"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toStartOf="@id/btn_0"
@@ -142,17 +142,17 @@
         android:id="@+id/btn_0"
         android:text="@string/btn_digit_0"
         style="@style/DigitButton"
-        app:layout_constraintStart_toEndOf="@id/btn_hashtag"
-        app:layout_constraintEnd_toStartOf="@id/btn_multiply"
+        app:layout_constraintStart_toEndOf="@id/btn_delete_all"
+        app:layout_constraintEnd_toStartOf="@id/btn_delete_once"
         app:layout_constraintTop_toBottomOf="@id/btn_8"
         app:layout_constraintBottom_toTopOf="@id/btn_call"
         android:layout_width="0dp"
         android:layout_height="0dp" />
 
-    <!--Button *-->
+    <!--Button delete once-->
     <Button
-        android:id="@+id/btn_multiply"
-        android:text="@string/btn_digit_multiply"
+        android:id="@+id/btn_delete_once"
+        android:text="@string/btn_digit_delete_once"
         style="@style/DigitButton"
         app:layout_constraintStart_toEndOf="@id/btn_0"
         app:layout_constraintEnd_toEndOf="parent"
