@@ -7,12 +7,11 @@
     tools:context=".MainActivity">
 
     <TextView
-        android:padding="16dp"
-        android:textSize="42sp"
-        android:gravity="center"
+        android:text="(11) 4538-5996"
         android:id="@+id/tv_number_call"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        style="@style/NumberToCallTextView" />
 
     <!--Button 1-->
     <Button
