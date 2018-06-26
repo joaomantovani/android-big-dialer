@@ -1,0 +1,24 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+    <style name="DigitButton" parent="Base.Widget.AppCompat.Button.Borderless">
+        <item name="android:textColor">@color/colorDigitButton</item>
+        <item name="android:textSize">64sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="CallerButton" parent="Base.Widget.AppCompat.Button">
+        <item name="android:background">@color/colorCallerButton</item>
+        <item name="android:textSize">36sp</item>
+        <item name="android:textColor">@color/colorWhiteText</item>
+        <item name="android:padding">16dp</item>
+    </style>
+
+</resources>
