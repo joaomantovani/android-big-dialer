@@ -10,7 +10,6 @@ import android.widget.Toast;
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
     private TextView mNumberCallTextView;
     private static String NULL_START = "";
-    private NumberFormatter numberFormatter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,8 +35,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         mNumberCallTextView = findViewById(R.id.tv_number_call);
         mNumberCallTextView.setText(NULL_START);
-
-        numberFormatter = new NumberFormatter(NULL_START);
     }
 
     @Override
@@ -65,6 +62,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 // Get the text from the button clicked
                 String number = button.getText().toString();
                 mNumberCallTextView.append(number);
+
+                String mFormattedNumber = new NumberFormatter(mNumberCallTextView.getText()
+                        .toString()).getmNumberFormatted();
+
+                mNumberCallTextView.setText(mFormattedNumber);
 
                 break;
         }
