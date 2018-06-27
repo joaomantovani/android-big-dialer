@@ -1,5 +1,7 @@
 package com.example.joao.dialogforhyperopia;
 
+import android.content.Intent;
+
 /**
  * Class responsible to format a string to a brazilian phone number
  *
@@ -7,33 +9,34 @@ package com.example.joao.dialogforhyperopia;
  * // TODO: 6/25/18 Improve the class docs
  */
 public class NumberFormatter {
-    private String mCallNumber;
+    private String mRawNumber;
+    private String mNumberFormatted;
 
-    /**
-     * Creates a new number Formater
-     *
-     * @param mCallNumber the phone number
-     */
-    public NumberFormatter(String mCallNumber) {
-        this.mCallNumber = mCallNumber;
+    public NumberFormatter(String mNumberFormatted) {
+        this.mNumberFormatted = mNumberFormatted;
+
+        this.mRawNumber = mNumberFormatted.replace(" ", "");
+        this.mRawNumber = mRawNumber.replace("-", "");
+        this.mRawNumber = mRawNumber.replace("(", "");
+        this.mRawNumber = mRawNumber.replace(")", "");
     }
 
-    /**
-     * Get the entire call number
-     *
-     * @return the phone number
-     */
-    public String getmCallNumber() {
-        return mCallNumber;
+    public String getmRawNumber() {
+        return mRawNumber;
     }
 
-    /**
-     * Set a new value for the call number
-     *
-     * @param mCallNumber the phone number
-     */
-    public void setmCallNumber(String mCallNumber) {
-        this.mCallNumber = formatNumber(mCallNumber);
+    public void setmRawNumber(String mRawNumber) {
+        this.mRawNumber = mRawNumber;
+    }
+
+    public String getmNumberFormatted() {
+        formatNumber();
+
+        return mNumberFormatted;
+    }
+
+    public void setmNumberFormatted(String mNumberFormatted) {
+        this.mNumberFormatted = mNumberFormatted;
     }
 
     /**
@@ -44,11 +47,19 @@ public class NumberFormatter {
      * @// TODO: 6/25/18 Format to fetch the house phone pattern Ex. (4538-2121)
      * @// TODO: 6/25/18 Format to fetch the cellphone pattern Ex. (97538-2121)
      *
-     * @param mCallNumber the phone number
-     * @return the phone number
      */
-    private String formatNumber(String mCallNumber){
+    private void formatNumber(){
+        boolean isCellphone = mRawNumber.length() == 9;
+        boolean isHomephone = mRawNumber.length() == 8;
+        Integer substringBreak = 0;
 
-        return mCallNumber;
+        if (isCellphone) substringBreak = 5;
+        if (isHomephone) substringBreak = 4;
+
+        if (isCellphone || isHomephone) {
+            mNumberFormatted = mNumberFormatted.replace("-", "");
+            mNumberFormatted = mNumberFormatted.substring(0, substringBreak) + "-" +
+                    mNumberFormatted.substring(substringBreak, mNumberFormatted.length());
+        }
     }
 }
