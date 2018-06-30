@@ -1,4 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <integer name="vibration_milliseconds">80</integer>
+    <integer name="digit_number_vibration_milliseconds">80</integer>
+    <integer name="digit_erase_once_vibration_milliseconds">40</integer>
+    <integer name="digit_erase_all_vibration_milliseconds">285</integer>
+
+    <integer name="button_digit_fadein_background_duration">350</integer>
+    <integer name="button_digit_fadeout_background_duration">450</integer>
 </resources>
