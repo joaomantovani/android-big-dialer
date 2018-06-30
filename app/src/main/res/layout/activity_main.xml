@@ -134,6 +134,7 @@
         app:layout_constraintEnd_toStartOf="@id/btn_0"
         app:layout_constraintTop_toBottomOf="@id/btn_7"
         app:layout_constraintBottom_toTopOf="@id/btn_call"
+        android:background="@drawable/btn_digit_erase"
         android:layout_width="0dp"
         android:layout_height="0dp" />
 
@@ -159,6 +160,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/btn_9"
         app:layout_constraintBottom_toTopOf="@id/btn_call"
+        android:background="@drawable/btn_digit_erase"
         android:layout_width="0dp"
         android:layout_height="0dp" />
 
