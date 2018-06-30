@@ -1,5 +1,8 @@
 package com.example.joao.dialogforhyperopia;
 
+import android.content.Context;
+import android.os.VibrationEffect;
+import android.os.Vibrator;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -62,6 +65,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             default:
                 // get the button clicked
                 Button button = (Button) v;
+
+                Vibrator vibrator = (Vibrator) v.getContext().getSystemService(Context.VIBRATOR_SERVICE);
+                if (vibrator != null) {
+                    vibrator.vibrate(getResources().getInteger(R.integer.vibration_milliseconds));
+                }
 
                 // Get the text from the button clicked
                 String number = button.getText().toString();
