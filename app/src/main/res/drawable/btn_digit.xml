@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:enterFadeDuration="@integer/button_digit_fadein_background_duration"
+    android:exitFadeDuration="@integer/button_digit_fadeout_background_duration">
+
+    <item android:state_pressed="true">
+        <shape >
+
+            <solid
+                android:color="@color/colorDigitButtonPressed" />
+
+            <corners
+                android:radius="4dp" />
+
+        </shape>
+    </item>
+
+</selector>

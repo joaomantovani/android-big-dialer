@@ -1,4 +1,4 @@
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
 
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
@@ -12,9 +12,10 @@
         <item name="android:textColor">@color/colorDigitButton</item>
         <item name="android:textSize">64sp</item>
         <item name="android:textStyle">bold</item>
+        <item name="android:background">@drawable/btn_digit</item>
     </style>
 
-    <style name="CallerButton" parent="Base.Widget.AppCompat.Button">
+    <style name="CallerButton" parent="Base.Widget.AppCompat.Button.Colored">
         <item name="android:background">@color/colorCallerButton</item>
         <item name="android:textSize">36sp</item>
         <item name="android:textColor">@color/colorWhiteText</item>

@@ -120,6 +120,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/btn_6"
         app:layout_constraintBottom_toTopOf="@id/btn_delete_once"
+        android:background="@drawable/btn_digit"
         android:layout_width="0dp"
         android:layout_height="0dp" />
 

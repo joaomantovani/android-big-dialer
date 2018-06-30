@@ -5,6 +5,8 @@
     <color name="colorAccent">#FF4081</color>
 
     <color name="colorDigitButton">#1a1a1a</color>
+    <color name="colorDigitButtonPressed">#A5D6A7</color>
+
     <color name="colorCallerButton">#2E7D32</color>
 
     <color name="colorWhiteText">#FFFFFF</color>
