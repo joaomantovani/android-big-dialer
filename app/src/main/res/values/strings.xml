@@ -12,7 +12,6 @@
     <string name="btn_digit_8">8</string>
     <string name="btn_digit_9">9</string>
     <string name="btn_digit_0">0</string>
-    <string name="btn_digit_asterisk">#</string>
-    <string name="btn_digit_multiply">*</string>
-    <string name="btn_digit_hashtag">#</string>
+    <string name="btn_digit_delete_all">C</string>
+    <string name="btn_digit_delete_once">B</string>
 </resources>
