@@ -1,7 +1,6 @@
 package com.example.joao.dialogforhyperopia;
 
 import android.content.Context;
-import android.os.VibrationEffect;
 import android.os.Vibrator;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -13,6 +12,7 @@ import android.widget.Toast;
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
     private TextView mNumberCallTextView;
     private static String NULL_START = "";
+    private Vibrator vibrator;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,6 +38,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         mNumberCallTextView = findViewById(R.id.tv_number_call);
         mNumberCallTextView.setText(NULL_START);
+
+        vibrator = (Vibrator) this.getSystemService(Context.VIBRATOR_SERVICE);
     }
 
     @Override
@@ -48,6 +50,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             case R.id.btn_delete_all:
                 // Reset the string to ""
                 mNumberCallTextView.setText(NULL_START);
+
+                if (vibrator != null) {
+                    vibrator.vibrate(getResources().getInteger(R.integer.digit_erase_all_vibration_milliseconds));
+                }
+
                 break;
             case R.id.btn_delete_once:
                 // If the content of the textView is not empty
@@ -56,6 +63,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     mNumberCallTextView.setText(
                             mNumber.substring(0, mNumber.length() - 1)
                     );
+
+                    if (vibrator != null) {
+                        vibrator.vibrate(getResources().getInteger(R.integer.digit_erase_once_vibration_milliseconds));
+                    }
                 }
                 break;
             case R.id.btn_call:
@@ -66,11 +77,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 // get the button clicked
                 Button button = (Button) v;
 
-                Vibrator vibrator = (Vibrator) v.getContext().getSystemService(Context.VIBRATOR_SERVICE);
-                if (vibrator != null) {
-                    vibrator.vibrate(getResources().getInteger(R.integer.vibration_milliseconds));
-                }
-
                 // Get the text from the button clicked
                 String number = button.getText().toString();
                 mNumberCallTextView.append(number);
@@ -79,6 +85,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                         .toString()).getmNumberFormatted();
 
                 mNumberCallTextView.setText(mFormattedNumber);
+
+                if (vibrator != null) {
+                    vibrator.vibrate(getResources().getInteger(R.integer.digit_number_vibration_milliseconds));
+                }
 
                 break;
         }
