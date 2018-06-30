@@ -166,15 +166,34 @@
 
 
     <!--Button Call-->
-    <Button
+    <!--<Button-->
+        <!--android:id="@+id/btn_call"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:text="@string/btn_call"-->
+        <!--style="@style/CallerButton"-->
+        <!--/>-->
+
+    <FrameLayout
         android:id="@+id/btn_call"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/btn_call"
-        style="@style/CallerButton"
-        />
+        style="@style/CallerButton">
+
+        <Button
+            android:id="@+id/btn_call_icon"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:clickable="false"
+            android:background="@null"
+            android:drawableStart="@drawable/ic_call_black_48dp"
+            android:minHeight="0dp"
+            android:minWidth="0dp"
+            android:drawableTint="@color/colorWhiteText" />
+    </FrameLayout>
 
 </android.support.constraint.ConstraintLayout>
