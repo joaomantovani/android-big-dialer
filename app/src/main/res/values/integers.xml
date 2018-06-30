@@ -6,4 +6,7 @@
 
     <integer name="button_digit_fadein_background_duration">350</integer>
     <integer name="button_digit_fadeout_background_duration">450</integer>
+
+    <integer name="button_caller_fadein_background_duration">550</integer>
+    <integer name="button_caller_fadeout_background_duration">650</integer>
 </resources>
