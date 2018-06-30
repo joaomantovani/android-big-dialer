@@ -47,9 +47,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 mNumberCallTextView.setText(NULL_START);
                 break;
             case R.id.btn_delete_once:
-                mNumberCallTextView.setText(
-                        mNumber.substring(0, mNumber.length() - 1)
-                );
+                // If the content of the textView is not empty
+                if (!mNumberCallTextView.getText().toString().isEmpty()) {
+                    //Delete the last digit
+                    mNumberCallTextView.setText(
+                            mNumber.substring(0, mNumber.length() - 1)
+                    );
+                }
                 break;
             case R.id.btn_call:
                 // TODO: 6/25/18 Call the activity to phone call
