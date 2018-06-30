@@ -6,12 +6,25 @@
     <item android:state_pressed="true">
         <shape >
 
+            <stroke
+                android:color="#4CAF50"
+                android:width="3dp" />
+
             <solid
                 android:color="@color/colorDigitButtonPressed" />
 
             <corners
                 android:radius="4dp" />
 
+
+        </shape>
+    </item>
+
+    <item>
+        <shape>
+            <stroke android:color="@color/grey_200"
+                android:width="1dp"
+                />
         </shape>
     </item>
 
