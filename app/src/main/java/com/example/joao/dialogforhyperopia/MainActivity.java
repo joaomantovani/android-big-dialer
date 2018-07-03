@@ -14,10 +14,16 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.i18n.phonenumbers.NumberParseException;
+import com.google.i18n.phonenumbers.PhoneNumberUtil;
+import com.google.i18n.phonenumbers.Phonenumber;
+
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
     private TextView mNumberCallTextView;
     private static String NULL_START = "";
     private Vibrator vibrator;
+    private PhoneNumberUtil pnu;
+    private Phonenumber.PhoneNumber pn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,6 +51,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         mNumberCallTextView.setText(NULL_START);
 
         vibrator = (Vibrator) this.getSystemService(Context.VIBRATOR_SERVICE);
+        pnu = PhoneNumberUtil.getInstance();
+        pn = null;
     }
 
     @Override
@@ -94,14 +102,18 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 // get the button clicked
                 Button button = (Button) v;
 
+                // TODO: 6/30/18 Improve performance here
                 // Get the text from the button clicked
                 String number = button.getText().toString();
                 mNumberCallTextView.append(number);
+                String callNumber = mNumberCallTextView.getText().toString();
 
-                String mFormattedNumber = new NumberFormatter(mNumberCallTextView.getText()
-                        .toString()).getmNumberFormatted();
-
-                mNumberCallTextView.setText(mFormattedNumber);
+                try {
+                    pn = pnu.parse(callNumber, "BR");
+                    mNumberCallTextView.setText(pnu.format(pn, PhoneNumberUtil.PhoneNumberFormat.NATIONAL));
+                } catch (NumberParseException e) {
+                    e.printStackTrace();
+                }
 
                 if (vibrator != null) {
                     vibrator.vibrate(getResources().getInteger(R.integer.digit_number_vibration_milliseconds));
