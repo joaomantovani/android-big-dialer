@@ -1,8 +1,8 @@
 # android-big-dialer
 A bigger dialer for people with vision impairment
 
-### Pre-release screenshot:
-![Pre-release screenshot](https://i.imgur.com/CiKG61w.jpg)
+### 1.1v screenshot:
+![Pre-release screenshot](https://i.imgur.com/ax8m70A.png)
 
 ## Getting Started
 

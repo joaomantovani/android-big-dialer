@@ -7,11 +7,23 @@
     tools:context=".MainActivity">
 
     <TextView
-        android:text="(11) 4538-5996"
+        android:text="(11) 0000-00000"
         android:id="@+id/tv_number_call"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@id/btn_delete"
         style="@style/NumberToCallTextView" />
+
+    <Button
+        android:id="@+id/btn_delete"
+        style="@style/DeleteButton"
+        android:layout_width="wrap_content"
+        android:layout_height="74dp"
+        android:paddingTop="10dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/btn_3"
+        app:layout_constraintRight_toRightOf="parent" />
 
     <!--Button 1-->
     <Button
@@ -95,7 +107,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toStartOf="@id/btn_8"
         app:layout_constraintTop_toBottomOf="@id/btn_4"
-        app:layout_constraintBottom_toTopOf="@id/btn_delete_all"
+        app:layout_constraintBottom_toTopOf="@id/btn_asterisk"
         android:layout_width="0dp"
         android:layout_height="0dp" />
 
@@ -119,16 +131,14 @@
         app:layout_constraintStart_toEndOf="@id/btn_8"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/btn_6"
-        app:layout_constraintBottom_toTopOf="@id/btn_delete_once"
+        app:layout_constraintBottom_toTopOf="@id/btn_hashtag"
         android:background="@drawable/btn_digit"
         android:layout_width="0dp"
         android:layout_height="0dp" />
 
-
-    <!--Button delete all-->
     <Button
-        android:id="@+id/btn_delete_all"
-        android:text="@string/btn_digit_delete_all"
+        android:id="@+id/btn_asterisk"
+        android:text="@string/btn_digit_asterisk"
         style="@style/DigitButton"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toStartOf="@id/btn_0"
@@ -144,8 +154,8 @@
         android:id="@+id/btn_0"
         android:text="@string/btn_digit_0"
         style="@style/DigitButton"
-        app:layout_constraintStart_toEndOf="@id/btn_delete_all"
-        app:layout_constraintEnd_toStartOf="@id/btn_delete_once"
+        app:layout_constraintStart_toEndOf="@id/btn_asterisk"
+        app:layout_constraintEnd_toStartOf="@id/btn_hashtag"
         app:layout_constraintTop_toBottomOf="@id/btn_8"
         app:layout_constraintBottom_toTopOf="@id/btn_call"
         android:layout_width="0dp"
@@ -153,8 +163,8 @@
 
     <!--Button delete once-->
     <Button
-        android:id="@+id/btn_delete_once"
-        android:text="@string/btn_digit_delete_once"
+        android:id="@+id/btn_hashtag"
+        android:text="@string/btn_digit_hashtag"
         style="@style/DigitButton"
         app:layout_constraintStart_toEndOf="@id/btn_0"
         app:layout_constraintEnd_toEndOf="parent"
@@ -163,16 +173,6 @@
         android:background="@drawable/btn_digit_erase"
         android:layout_width="0dp"
         android:layout_height="0dp" />
-
-
-    <!--Button Call-->
-    <!--<Button-->
-        <!--android:id="@+id/btn_call"-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:text="@string/btn_call"-->
-        <!--style="@style/CallerButton"-->
-        <!--/>-->
 
     <FrameLayout
         android:id="@+id/btn_call"

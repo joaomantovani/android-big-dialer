@@ -9,6 +9,7 @@ import android.os.Vibrator;
 import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.KeyEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -18,7 +19,7 @@ import com.google.i18n.phonenumbers.NumberParseException;
 import com.google.i18n.phonenumbers.PhoneNumberUtil;
 import com.google.i18n.phonenumbers.Phonenumber;
 
-public class MainActivity extends AppCompatActivity implements View.OnClickListener {
+public class MainActivity extends AppCompatActivity implements View.OnClickListener, View.OnLongClickListener {
     private TextView mNumberCallTextView;
     private static String NULL_START = "";
     private Vibrator vibrator;
@@ -29,6 +30,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        findViewById(R.id.btn_delete).setOnClickListener(this);
+        findViewById(R.id.btn_delete).setOnLongClickListener(this);
 
         findViewById(R.id.btn_0).setOnClickListener(this);
         findViewById(R.id.btn_1).setOnClickListener(this);
@@ -41,9 +45,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         findViewById(R.id.btn_8).setOnClickListener(this);
         findViewById(R.id.btn_9).setOnClickListener(this);
         findViewById(R.id.btn_0).setOnClickListener(this);
+        findViewById(R.id.btn_0).setOnLongClickListener(this);
 
-        findViewById(R.id.btn_delete_once).setOnClickListener(this);
-        findViewById(R.id.btn_delete_all).setOnClickListener(this);
+        findViewById(R.id.btn_asterisk).setOnClickListener(this);
+        findViewById(R.id.btn_hashtag).setOnClickListener(this);
 
         findViewById(R.id.btn_call).setOnClickListener(this);
 
@@ -56,30 +61,35 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     @Override
+    public boolean onLongClick(View v) {
+        switch (v.getId()) {
+            case R.id.btn_delete:
+                mNumberCallTextView.setText(NULL_START);
+                break;
+            case R.id.btn_0:
+                addNumberToDialer("+");
+                break;
+        }
+
+        if (vibrator != null) {
+            vibrator.vibrate(getResources().getInteger(R.integer.digit_erase_all_vibration_milliseconds));
+        }
+        
+        return true;
+    }
+
+    @Override
     public void onClick(View v) {
         String mNumber = mNumberCallTextView.getText().toString();
 
         switch (v.getId()) {
-            case R.id.btn_delete_all:
-                // Reset the string to ""
-                mNumberCallTextView.setText(NULL_START);
-
-                if (vibrator != null) {
-                    vibrator.vibrate(getResources().getInteger(R.integer.digit_erase_all_vibration_milliseconds));
-                }
-
-                break;
-            case R.id.btn_delete_once:
+            case R.id.btn_delete:
                 // If the content of the textView is not empty
                 if (!mNumberCallTextView.getText().toString().isEmpty()) {
                     //Delete the last digit
                     mNumberCallTextView.setText(
                             mNumber.substring(0, mNumber.length() - 1)
                     );
-
-                    if (vibrator != null) {
-                        vibrator.vibrate(getResources().getInteger(R.integer.digit_erase_once_vibration_milliseconds));
-                    }
                 }
                 break;
             case R.id.btn_call:
@@ -102,24 +112,32 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 // get the button clicked
                 Button button = (Button) v;
 
-                // TODO: 6/30/18 Improve performance here
                 // Get the text from the button clicked
                 String number = button.getText().toString();
-                mNumberCallTextView.append(number);
-                String callNumber = mNumberCallTextView.getText().toString();
-
-                try {
-                    pn = pnu.parse(callNumber, "BR");
-                    mNumberCallTextView.setText(pnu.format(pn, PhoneNumberUtil.PhoneNumberFormat.NATIONAL));
-                } catch (NumberParseException e) {
-                    e.printStackTrace();
-                }
-
-                if (vibrator != null) {
-                    vibrator.vibrate(getResources().getInteger(R.integer.digit_number_vibration_milliseconds));
-                }
+                addNumberToDialer(number);
 
                 break;
+        }
+
+        if (vibrator != null) {
+            vibrator.vibrate(getResources().getInteger(R.integer.digit_erase_once_vibration_milliseconds));
+        }
+    }
+
+    /**
+     * TODO: 6/30/18 Improve performance here
+     *
+     * @param number the string number to append on the dialer
+     */
+    private void addNumberToDialer(String number) {
+        mNumberCallTextView.append(number);
+        String callNumber = mNumberCallTextView.getText().toString();
+
+        try {
+            pn = pnu.parse(callNumber, "BR");
+            mNumberCallTextView.setText(pnu.format(pn, PhoneNumberUtil.PhoneNumberFormat.NATIONAL));
+        } catch (NumberParseException e) {
+            e.printStackTrace();
         }
     }
 }

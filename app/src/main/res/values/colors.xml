@@ -10,8 +10,10 @@
     <color name="colorCallerButton">#388E3C</color>
     <color name="colorCallerButtonPressed">#1B5E20</color>
 
-    <color name="colorWhiteText">#FFFFFF</color>
+    <color name="colorDeleteButton">#F44336</color>
+    <color name="colorDeleteButtonPressed">#C62828</color>
 
+    <color name="colorWhiteText">#FFFFFF</color>
 
     <!--Grey colors-->
     <color name="grey_050">#FAFAFA</color>
