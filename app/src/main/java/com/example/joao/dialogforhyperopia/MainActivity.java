@@ -96,6 +96,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 String mNumberToCall = new NumberFormatter(mNumberCallTextView.getText()
                         .toString()).getmRawNumber();
 
+                if (mNumberToCall.isEmpty())
+                    break;
+
                 Intent intent = new Intent(Intent.ACTION_CALL, Uri.parse("tel:" + "+55" + mNumberToCall));
 
                 if (ActivityCompat.checkSelfPermission(this, Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED) {
