@@ -16,4 +16,5 @@
     <string name="btn_digit_hashtag">#</string>
     <string name="btn_digit_delete_all">C</string>
     <string name="btn_digit_delete_once">B</string>
+    <string name="plus">+</string>
 </resources>
