@@ -134,7 +134,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         String callNumber = mNumberCallTextView.getText().toString();
 
         try {
-            pn = pnu.parse(callNumber, "BR");
+            pn = pnu.parse(callNumber, "");
             mNumberCallTextView.setText(pnu.format(pn, PhoneNumberUtil.PhoneNumberFormat.NATIONAL));
         } catch (NumberParseException e) {
             e.printStackTrace();
