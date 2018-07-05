@@ -15,6 +15,7 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.joao.dialogforhyperopia.utils.CountryCode;
 import com.google.i18n.phonenumbers.NumberParseException;
 import com.google.i18n.phonenumbers.PhoneNumberUtil;
 import com.google.i18n.phonenumbers.Phonenumber;
@@ -25,6 +26,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private Vibrator vibrator;
     private PhoneNumberUtil pnu;
     private Phonenumber.PhoneNumber pn;
+    private String mCountryCode;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,6 +60,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         vibrator = (Vibrator) this.getSystemService(Context.VIBRATOR_SERVICE);
         pnu = PhoneNumberUtil.getInstance();
         pn = null;
+
+        // Automatic get the country code
+        mCountryCode = new CountryCode(getSystemService((Context.TELEPHONY_SERVICE)))
+                .getmCountryZipCode();
     }
 
     @Override
@@ -134,7 +140,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         String callNumber = mNumberCallTextView.getText().toString();
 
         try {
-            pn = pnu.parse(callNumber, "");
+            pn = pnu.parse(callNumber, mCountryCode);
             mNumberCallTextView.setText(pnu.format(pn, PhoneNumberUtil.PhoneNumberFormat.NATIONAL));
         } catch (NumberParseException e) {
             e.printStackTrace();
