@@ -9,22 +9,18 @@ import android.os.Vibrator;
 import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.KeyEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
 
+import com.example.joao.dialogforhyperopia.utils.CountryCode;
 import com.google.i18n.phonenumbers.NumberParseException;
-import com.google.i18n.phonenumbers.PhoneNumberUtil;
-import com.google.i18n.phonenumbers.Phonenumber;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener, View.OnLongClickListener {
     private TextView mNumberCallTextView;
     private static String NULL_START = "";
     private Vibrator vibrator;
-    private PhoneNumberUtil pnu;
-    private Phonenumber.PhoneNumber pn;
+    private CountryCode mCountryCode;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,8 +52,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         mNumberCallTextView.setText(NULL_START);
 
         vibrator = (Vibrator) this.getSystemService(Context.VIBRATOR_SERVICE);
-        pnu = PhoneNumberUtil.getInstance();
-        pn = null;
+
+        // Automatic get the country code
+        mCountryCode = new CountryCode(getSystemService(Context.TELEPHONY_SERVICE));
     }
 
     @Override
@@ -67,7 +64,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 mNumberCallTextView.setText(NULL_START);
                 break;
             case R.id.btn_0:
-                addNumberToDialer("+");
+                try {
+                    addNumberToDialer(getString(R.string.plus));
+                } catch (NumberParseException e) {
+                    e.printStackTrace();
+                }
                 break;
         }
 
@@ -99,7 +100,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 if (mNumberToCall.isEmpty())
                     break;
 
-                Intent intent = new Intent(Intent.ACTION_CALL, Uri.parse("tel:" + "+55" + mNumberToCall));
+                Intent intent = null;
+                try {
+                    intent = new Intent(Intent.ACTION_CALL, Uri.parse(
+                            mCountryCode.getmIntentCallNumber(mNumberToCall)
+                    ));
+                } catch (NumberParseException e) {
+                    e.printStackTrace();
+                }
 
                 if (ActivityCompat.checkSelfPermission(this, Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED) {
                     ActivityCompat.requestPermissions(
@@ -117,7 +125,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
                 // Get the text from the button clicked
                 String number = button.getText().toString();
-                addNumberToDialer(number);
+                try {
+                    addNumberToDialer(number);
+                } catch (NumberParseException e) {
+                    e.printStackTrace();
+                }
 
                 break;
         }
@@ -128,19 +140,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     /**
-     * TODO: 6/30/18 Improve performance here
-     *
      * @param number the string number to append on the dialer
      */
-    private void addNumberToDialer(String number) {
+    private void addNumberToDialer(String number) throws NumberParseException {
         mNumberCallTextView.append(number);
-        String callNumber = mNumberCallTextView.getText().toString();
-
-        try {
-            pn = pnu.parse(callNumber, "");
-            mNumberCallTextView.setText(pnu.format(pn, PhoneNumberUtil.PhoneNumberFormat.NATIONAL));
-        } catch (NumberParseException e) {
-            e.printStackTrace();
-        }
     }
 }
