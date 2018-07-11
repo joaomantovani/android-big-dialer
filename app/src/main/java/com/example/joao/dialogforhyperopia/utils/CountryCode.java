@@ -32,10 +32,12 @@ public class CountryCode {
     }
 
     public String getmIntentCallNumber(String callNumber) throws NumberParseException {
-//        return "tel:" + getmCountryZipCode();
         pn = pnu.parse(callNumber, getmCountryZipCode());
 
-        return "tel:" + pnu.format(pn, PhoneNumberUtil.PhoneNumberFormat.INTERNATIONAL);
+        // TODO: 7/11/18 Improve the number formatter
+        // return "tel:" + pnu.format(pn, PhoneNumberUtil.PhoneNumberFormat.E164);
+
+        return "tel:" + callNumber;
     }
 
     public String getNationalNumber(String callNumber) throws NumberParseException {

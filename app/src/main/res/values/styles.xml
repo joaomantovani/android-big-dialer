@@ -10,7 +10,7 @@
 
     <style name="DigitButton" parent="Base.Widget.AppCompat.Button.Borderless">
         <item name="android:textColor">@color/colorDigitButton</item>
-        <item name="android:textSize">64sp</item>
+        <item name="android:textSize">64dp</item>
         <item name="android:textStyle">bold</item>
         <item name="android:background">@drawable/btn_digit</item>
     </style>
