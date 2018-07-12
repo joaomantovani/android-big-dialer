@@ -1,6 +1,6 @@
 <resources>
-    <string name="app_name">DialogForHyperopia</string>
-    <string name="btn_call">Ligar</string>
+    <string name="app_name">Big Dialer</string>
+    <string name="btn_call">Call</string>
 
     <string name="btn_digit_1">1</string>
     <string name="btn_digit_2">2</string>

@@ -1,4 +1,4 @@
-package com.example.joao.dialogforhyperopia.utils;
+package com.example.joao.androidbigdialer.utils;
 
 import android.content.Context;
 import android.telephony.TelephonyManager;
