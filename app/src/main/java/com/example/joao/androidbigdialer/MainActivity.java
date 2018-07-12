@@ -1,4 +1,4 @@
-package com.example.joao.dialogforhyperopia;
+package com.example.joao.androidbigdialer;
 
 import android.Manifest;
 import android.content.Context;
@@ -9,12 +9,12 @@ import android.os.Vibrator;
 import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.TypedValue;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
-import com.example.joao.dialogforhyperopia.utils.CountryCode;
+import com.example.joao.dialogforhyperopia.R;
+import com.example.joao.androidbigdialer.utils.CountryCode;
 import com.google.i18n.phonenumbers.NumberParseException;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener, View.OnLongClickListener {
