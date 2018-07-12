@@ -1,4 +1,4 @@
-package com.example.joao.dialogforhyperopia;
+package com.example.joao.androidbigdialer;
 
 import android.content.Intent;
 
