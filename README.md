@@ -28,7 +28,9 @@ Creates a pull request with your suggestion/enhancement/bugfix/others
 
 ## Authors
 
-* **João Mantovani** - *Initial work* - [JoaoMantovani](https://github.com/joaomantovani)
+* **João Mantovani** - *App develop* - [JoaoMantovani](https://github.com/joaomantovani)
+
+* **Gabriel Garcia** - *Logo design* - [ggabogarcia](https://github.com/ggabogarcia)
 
 ## License
 
