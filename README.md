@@ -1,8 +1,13 @@
 # android-big-dialer
 A bigger dialer for people with vision impairment
 
-### 1.1v screenshot:
-![Pre-release screenshot](https://i.imgur.com/ax8m70A.png)
+### Gif/Screenshot:
+![GIF](https://image.ibb.co/fwQxBy/final.gif)
+
+## Playstore
+Check/Download the app in the store:
+
+https://play.google.com/store/apps/details?id=com.joaomantovani.androidbigdialer
 
 ## Getting Started
 
@@ -19,11 +24,13 @@ TODO
 
 ## Contributing
 
-TODO
+Creates a pull request with your suggestion/enhancement/bugfix/others
 
 ## Authors
 
-* **João Mantovani** - *Initial work* - [JoaoMantovani](https://github.com/joaomantovani)
+* **João Mantovani** - *App develop* - [JoaoMantovani](https://github.com/joaomantovani)
+
+* **Gabriel Garcia** - *Logo design* - [ggabogarcia](https://github.com/ggabogarcia)
 
 ## License
 
