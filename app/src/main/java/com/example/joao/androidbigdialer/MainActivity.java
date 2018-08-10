@@ -101,7 +101,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 if (mNumberToCall.isEmpty())
                     break;
 
-                Intent intent = null;
+                Intent intent = new Intent(getBaseContext(), MainActivity.class);
                 try {
                     intent = new Intent(Intent.ACTION_CALL, Uri.parse(
                             mCountryCode.getmIntentCallNumber(mNumberToCall)
